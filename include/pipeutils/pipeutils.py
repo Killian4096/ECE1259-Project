@@ -53,12 +53,10 @@ def get_dependent_var(pipe):
     for key, value in pipe.items():
         if(value.shape[0] == 0):
             return key
-        
 
-
-
-def calculate_outfile(pipe, calc_func):
+def text_to_array(pipe):
     pipe = text_cleaner(pipe)
     pipe = array_convert(pipe)
-    pipe = calc_func(pipe)
     return pipe
+
+
