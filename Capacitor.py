@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib as plt
+import sys
 
 class Capacitor:
     def __init__(self, permitivity, area, distance):
@@ -12,5 +13,5 @@ class Capacitor:
         print("C = {} pF".format(self.capacitance))
 
     def breakdownVoltage(self):
-        self.bdv = self.permitivity * self.distance
-        print("V_BR = {} Volts".format(self.bdv))
+        self.bdv = self.permitivity*self.distance
+        print("V_BR = {}V".format(self.bdv))
