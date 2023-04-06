@@ -1,9 +1,12 @@
 %clc, clear, close all
+
+while true
+
 j = 1i;
-relative_permitivity_list = [1, 2.1, 2.56, 3.8, 5.4, 10];
+relative_permitivity_list = [1.1, 2.1, 2.56, 3.8, 5.4, 10];
 dielectric_strength_list = [3e6, 60e6, 20e6, 30e6, 200e6, 30e6];
-conductivity_list = [0, 10e-15, 10e-17, 10e-17, 10e-15, 10e-12];
-frequency = {1*10^-16, 100*10^6}
+conductivity_list = [0.0001, 10e-15, 10e-17, 10e-17, 10e-15, 10e-12];
+frequency = {1*10^6, 100*10^6};
 
 
 %Caller user input script
@@ -25,6 +28,12 @@ fprintf('V_BR = %f V\n', breakdownvoltage);
 %Generate Graphs
 graphinfo(conductivity, relative_permitivity, capacitance, frequency)
 
+uinput = input("Generate new capacitor?(y or n)\n", 's');
+if (uinput == 'y')
+else
+    break
+end
+end
 
 function values = get_user_input()
     %displays list of dielectrics and their permitivities
@@ -68,7 +77,7 @@ end
 
 function graphinfo(conductivity, relative_perm, capacitance, frequency)
     p = 8.854*10^-12*relative_perm; % permitivity
-    
+    figure()
     subplot(2, 1, 1);
     %x = linspace(0, 100, 100);
     %y1 = tan(conductivity./(x*10^6*p));
